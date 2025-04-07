@@ -1,8 +1,14 @@
 package Component;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Employee {
     String empId;
     String name;
+
 
     private Department department;
 
@@ -29,6 +35,9 @@ public class Employee {
     public void setDepartment(Department department) {
         this.department = department;
     }
+
+
+
 
     @Override
     public String toString() {

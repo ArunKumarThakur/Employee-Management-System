@@ -8,4 +8,5 @@
     <bean id="emp" class="Component.Employee">
         <property name="Department" ref="dept"/>
     </bean>
+    <bean id="empService" class="Component.EmployeeServiceImplementation"/>
 </beans>
