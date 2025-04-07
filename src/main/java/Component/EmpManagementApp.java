@@ -30,7 +30,15 @@ public class EmpManagementApp {
         dept.setDeptId(deptId);
         dept.setDeptName(deptName);
 
-//        emp.setDepartment(dept);
+        // Dependency Injection is handled by Spring IOC container
+        // via xml configuration
+        // Hence no need to inject manually
+
+        // ways to inject dependencies :
+        // 1. Constructor Injection
+        // 2. Setter Injection
+        // 3. Annotation (Field)
+        // emp.setDepartment(dept);
 
         System.out.println(emp);
     }
