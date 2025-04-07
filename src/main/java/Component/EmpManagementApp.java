@@ -10,6 +10,7 @@ public class EmpManagementApp {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("emp.xml");
 
+        EmployeeIdGenerator employeeIdGenerator = (EmployeeIdGenerator)context.getBean("generateId");
         EmployeeService empl = (EmployeeService) context.getBean("empService");
         int choice = 1;
         Scanner sc = new Scanner(System.in);
@@ -22,8 +23,7 @@ public class EmpManagementApp {
 
             switch (query){
                 case 1:
-                    System.out.println("Enter employee id");
-                    String empId = sc.next();
+                    String empId = employeeIdGenerator.getGeneratedEmpId();
                     System.out.println("Enter employee Name");
                     String empName = sc.next();
 
