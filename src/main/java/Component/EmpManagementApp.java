@@ -15,7 +15,7 @@ public class EmpManagementApp {
         Scanner sc = new Scanner(System.in);
         while(choice != 0) {
             System.out.println("1. Add Employee\n2. view Employee\n3. getEmployeeById" +
-                    "\n4. Remove EmployeeById");
+                    "\n4. Remove EmployeeById\n5. View departmental employee");
 
             System.out.println("Enter Your choice");
             int query = sc.nextInt();
@@ -27,8 +27,8 @@ public class EmpManagementApp {
                     System.out.println("Enter employee Name");
                     String empName = sc.next();
 
-                    Department dept = new Department();
-                    Employee employee = new Employee();
+                    Department dept = context.getBean(Department.class);
+                    Employee employee = context.getBean(Employee.class);
                     employee.setEmpId(empId);
                     employee.setName(empName);
 
@@ -76,6 +76,20 @@ public class EmpManagementApp {
                     }
                     empl.removeEmployeeById(empId1);
                     System.out.println("Employee removed from database");
+                    break;
+                case 5:
+                    System.out.println("Enter departmental id");
+                    String deptId2 = sc.next();
+                    List<Employee> eList = empl.getEmployeeByDept(deptId2);
+
+                    if(eList == null) {
+                        System.out.println("Id not Found");
+                        break;
+                    }
+
+                    for(Employee employee3 : eList) {
+                        System.out.println(employee3);
+                    }
                     break;
                 default:
                     System.exit(1);

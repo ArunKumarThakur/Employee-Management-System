@@ -15,6 +15,17 @@ public class EmployeeServiceImplementation implements EmployeeService{
     public void addEmployee(Employee employee) {
         empIdToEmp.put(employee.getEmpId(), employee);
         employeeList.add(employee);
+
+        Department department = employee.getDepartment();
+        if(deptToEmpMap.containsKey(department.getDeptId())) {
+            List<Employee> eList = deptToEmpMap.get(department.getDeptId());
+            eList.add(employee);
+            deptToEmpMap.put(department.getDeptId(), eList);
+        } else {
+            List<Employee> eList= new ArrayList<>();
+            eList.add(employee);
+            deptToEmpMap.put(department.getDeptId(), eList);
+        }
     }
 
     @Override
@@ -27,11 +38,20 @@ public class EmployeeServiceImplementation implements EmployeeService{
         return empIdToEmp.get(empId);
     }
 
+    @Override
     public boolean removeEmployeeById(String id) {
         Employee employee = empIdToEmp.get(id);
         employeeList.remove(employee);
         empIdToEmp.remove(id);
         return empIdToEmp.get(id) == null;
+    }
+
+    @Override
+    public List<Employee> getEmployeeByDept(String deptId) {
+        List<Employee> eList = deptToEmpMap.get(deptId);
+
+        if(eList == null) return new ArrayList<>();
+        return eList;
     }
 
 }

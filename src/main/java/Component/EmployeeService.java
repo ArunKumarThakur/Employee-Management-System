@@ -7,4 +7,5 @@ public interface EmployeeService {
     List<Employee> getAllEmployees();
     Employee getEmployeeById(String empId);
     boolean removeEmployeeById(String empId);
+    List<Employee> getEmployeeByDept(String id);
 }

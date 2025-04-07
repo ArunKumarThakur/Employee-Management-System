@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="dept" class="Component.Department"/>
-    <bean id="emp" class="Component.Employee">
+    <bean id="dept" class="Component.Department" scope="prototype"/>
+    <bean id="emp" class="Component.Employee" scope="prototype">
         <property name="Department" ref="dept"/>
     </bean>
     <bean id="empService" class="Component.EmployeeServiceImplementation"/>
